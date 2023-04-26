@@ -2,6 +2,9 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\PaypalController;
+use App\Http\Livewire\Shoppingcart;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,8 +19,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return redirect(route('shop.index'));
+})->name('/');
 
 Route::get('shop', [ProductController::class, 'index'])->name('shop.index');
 
@@ -32,3 +35,11 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+
+Route::get('/shoppingcart', Shoppingcart::class)->name('shoppingcart');
+
+Route::get('payment-cancel',[PaypalController::class,'cancel'])->name('payment.cancel');
+
+
+Route::get('payment-success',[PaypalController::class,'success'])->name('payment.success');
