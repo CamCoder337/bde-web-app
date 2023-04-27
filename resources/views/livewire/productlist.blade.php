@@ -4,7 +4,7 @@
     <main class="my-2">
         <div class="container mx-auto px-6">
             <h3 class="text-gray-700 text-2xl font-medium">Products</h3>
-            <form class="flex flex-col md:flex-row gap-3" style="justify-content: center;" action="{{ route('/') }}" method="GET">
+            <form class="flex flex-col md:flex-row gap-3" style="justify-content: center;" action="{{ route('shop.index') }}" method="GET">
                     <div class="flex">
                         <input type="text" name="search" id="search" placeholder="Search for the product you want"
                             class="w-full md:w-80 px-3 h-10 rounded-l border-2 border-sky-500 focus:outline-none focus:border-sky-500"

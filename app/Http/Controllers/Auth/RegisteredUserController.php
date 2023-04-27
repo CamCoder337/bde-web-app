@@ -40,20 +40,19 @@ class RegisteredUserController extends Controller
         
 
         //Ajout de la methode pour determiner le role de l'user; 0-admin, 1-cesi, 2-student
-        // $role = 2;
-        // $email = $request->email;
-        // $regex = '/^[\w-\.]+@ucac-icam\.com$/';
-        // if (preg_match($regex, $email)) {
-        //     //mail cesi valide
-        //     $role = 1;
-        // }
+        $role = 2;
+        $regex = '/^[\w\-\.]+@[\w\-]+\.ucac\-icam\.com$/';
+        if (preg_match($regex, $request->email)) {
+            //mail cesi valide
+            $role = 1;
+        }
 
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            //'role' => $role,
+            'role' => $role,
         ]);
 
         event(new Registered($user));

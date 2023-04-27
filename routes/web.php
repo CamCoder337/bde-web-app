@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\IdeaController;
@@ -19,19 +21,24 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return redirect(route('shop.index'));
-})->name('/');
-
 // Route::get('/', function () {
-//     return redirect(route('home.index'));
-// })->name('home.index');
+//     return redirect(route('shop.index'));
+// })->name('/');
+
+Route::get('/', function () {
+    return redirect(route('home.index'));
+})->name('home.index');
+
+//Idea Routes
+Route::get('home', [HomeController::class, 'index'])->name('home.index');
 
 
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/dashboard',[AdminController::class, 'index'])->name('dashboard');
 
 
 //Auth Routes

@@ -22,6 +22,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
     ];
 
     /**
@@ -48,19 +49,5 @@ class User extends Authenticatable
         return $this->hasMany(Order::class);
     }
 
-    public function isAdmin()
-    {
-        if($this->role == 0){
-            return true;
-        }
-        return false;
-    }
-
-    public function isCesi()
-    {
-        if($this->role == 1){
-            return true;
-        }
-        return false;
-    }
+    
 }
