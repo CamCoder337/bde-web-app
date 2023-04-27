@@ -24,8 +24,8 @@ Route::get('/', function () {
 })->name('/');
 
 // Route::get('/', function () {
-//     return redirect(route('shop.index'));
-// })->name('/');
+//     return redirect(route('home.index'));
+// })->name('home.index');
 
 
 
