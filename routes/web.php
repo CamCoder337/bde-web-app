@@ -1,8 +1,9 @@
 <?php
 
+use App\Http\Controllers\EventController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProductController;
-use App\Http\Controllers\CartController;
+use App\Http\Controllers\IdeaController;
 use App\Http\Controllers\PaypalController;
 use App\Http\Livewire\Shoppingcart;
 use Illuminate\Support\Facades\Route;
@@ -22,12 +23,18 @@ Route::get('/', function () {
     return redirect(route('shop.index'));
 })->name('/');
 
-Route::get('shop', [ProductController::class, 'index'])->name('shop.index');
+// Route::get('/', function () {
+//     return redirect(route('shop.index'));
+// })->name('/');
+
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+
+//Auth Routes
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -36,10 +43,14 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-
+//Shop Routes
+Route::get('shop', [ProductController::class, 'index'])->name('shop.index');
 Route::get('/shoppingcart', Shoppingcart::class)->name('shoppingcart');
-
 Route::get('payment-cancel',[PaypalController::class,'cancel'])->name('payment.cancel');
-
-
 Route::get('payment-success',[PaypalController::class,'success'])->name('payment.success');
+
+//Idea Routes
+Route::get('ideas', [IdeaController::class, 'index'])->name('ideas.index');
+
+//Event Routes
+Route::get('/events', [EventController::class, 'index'])->name('events.index');

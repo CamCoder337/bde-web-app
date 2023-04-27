@@ -47,7 +47,7 @@ class Shoppingcart extends Component
     }
 
     public function removeItem($id){
-        $cart = Cart::whereId($id)->first();
+        $cart = Cart::whereId($id)->where('status','!=', Cart::STATUS['success'])->first();
         $cart->delete();
         $this->emit('udapteCartCount');
         session()->flash('success', 'Product removed from cart !!!');

@@ -17,6 +17,7 @@ class Productlist extends Component
     {
         
         $query = Product::query();
+        $query->where('active', 1);
 
         $selectedCategory = $request->input('category');
         if ($selectedCategory) {
@@ -54,7 +55,11 @@ class Productlist extends Component
              $data = ['user_id' =>auth()->user()->id,
              'product_id' => $id,
             ];
-            Shoppingcart::updateOrCreate($data);
+            if(Shoppingcart::where($data)->where('status','!=', Shoppingcart::STATUS['success'])->exists()){
+                session()->flash('info', 'Product already in cart');
+                return;
+            }
+            Shoppingcart::create($data);
 
             $this->emit('udapteCartCount');
             session()->flash('success', 'Product added to the cart sucessfully');

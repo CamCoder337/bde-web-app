@@ -36,10 +36,24 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
+        //Ajout de la requete API pour la vérification de l'adresse mail de l'user
+        
+
+        //Ajout de la methode pour determiner le role de l'user; 0-admin, 1-cesi, 2-student
+        // $role = 2;
+        // $email = $request->email;
+        // $regex = '/^[\w-\.]+@ucac-icam\.com$/';
+        // if (preg_match($regex, $email)) {
+        //     //mail cesi valide
+        //     $role = 1;
+        // }
+
+
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            //'role' => $role,
         ]);
 
         event(new Registered($user));
