@@ -64,3 +64,18 @@ Route::post('add-idea', [IdeaController::class, 'addIdea']);
 
 //Event Routes
 Route::get('/events', [EventController::class, 'index'])->name('events.index');
+
+//Download All images
+Route::get('/download-images', 'App\Http\Controllers\ImageController@downloadImages')->name('download-images');
+
+//Admin Routes - Events
+Route::get('add-event', [AdminController::class, 'eventForm'])->name('admin.add_event');
+Route::post('add-event', [AdminController::class, 'addEvent']);
+
+//Admin Routes - Product
+Route::get('/add-product', [AdminController::class, 'productForm'])->name('admin.add_product');
+Route::post('/add-product', [AdminController::class, 'addProduct']);
+// Route::middleware(['auth'])->group(function () {
+//     Route::get('/add-product', [AdminController::class, 'productForm'])->name('admin.add_product');
+//     Route::post('/add-product', [AdminController::class, 'addProduct']);
+// });

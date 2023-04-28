@@ -12,6 +12,14 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Product extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'name',
+        'category_id',
+        'description',
+        'price',
+        'image',
+        'active'
+    ];
     public function orders(): BelongsToMany
     {
         return $this->belongsToMany(Order::class)->withPivot('total_quantity', 'total_price');

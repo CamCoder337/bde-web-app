@@ -9,7 +9,9 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                    {{ __("You're logged in!") }}
+                <a href="{{route('admin.add_product')}}" class="btn btn-primary">Add Product</a>
+                <a href="{{route('admin.add_event')}}" class="btn btn-secondary">Add Event</a>
+                <a href="" class="btn btn-success">Download Subscribers</a>
                 </div>
             </div>
         </div>

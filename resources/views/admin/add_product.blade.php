@@ -1,14 +1,14 @@
 <x-app-layout>
 <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Add Ideas') }}
+            {{ __('Add Products') }}
         </h2>
 </x-slot>
 <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                    {{ __("Add your Idea!") }}
+                    {{ __("Add a Product!") }}
                 </div>
             </div>
         </div>
@@ -23,19 +23,19 @@
         <div class="w-full px-3">
           <div class="mb-5">
             <label
-              for="title"
+              for="name"
               class="mb-3 block text-base font-medium text-[#07074D]"
             >
               Title
             </label>
             <input
               type="text"
-              name="title"
-              id="title"
-              value="Event Title"
+              name="name"
+              id="name"
+              value="Product name"
               class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
             />
-            @error("title")
+            @error("name")
                 {{$message}}
             @enderror
           </div>
@@ -56,11 +56,30 @@
           value="Description"
           min="0"
           class="w-full appearance-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-        >Description of your event</textarea>
+        >Description of your product</textarea>
         @error("description")
                 {{$message}}
             @enderror
       </div>
+      <div class="w-full px-3">
+          <div class="mb-5">
+            <label
+              for="Category"
+              class="mb-3 block text-base font-medium text-[#07074D]"
+            >
+              Category
+            </label>
+            <select name="category" id="category" class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md">
+            @foreach ($categories as $category)
+            <option value="{{$category->id}}">{{$category->name}}</option>
+            @endforeach
+
+            </select>
+            @error("category")
+                {{$message}}
+            @enderror
+          </div>
+        </div>
       <div class="-mx-3 flex flex-wrap">
         <div class="w-full px-3">
           <div class="mb-5">
@@ -83,29 +102,6 @@
           </div>
         </div>
 
-      </div>
-      
-
-      <div class="-mx-3 flex flex-wrap">
-        <div class="w-full px-3">
-          <div class="mb-5">
-            <label
-              for="date"
-              class="mb-3 block text-base font-medium text-[#07074D]"
-            >
-              Date
-            </label>
-            <input
-              type="datetime-local"
-              name="start_date"
-              id="date"
-              class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-            />
-            @error("start_date")
-                {{$message}}
-            @enderror
-          </div>
-        </div>
       </div>
 
       <div class="-mx-3 flex flex-wrap">
@@ -139,7 +135,7 @@
         </button>
       </div>
     </form>
-    <a href="{{route('ideas.index')}}" class="btn btn-primary">Ideas Box</a>
+    <a href="{{route('dashboard')}}" class="btn btn-primary">Dashboard</a>
     
   </div>
   

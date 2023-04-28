@@ -23,14 +23,9 @@ class Productlist extends Component
         if ($selectedCategory) {
             $query->where('category_id', $selectedCategory);
         }
-        $selectedPrice_min = $request->input('min_price');
-        if ($selectedPrice_min) {
-            $query->where('price', '>=', $selectedPrice_min);
-        }
-
-        $selectedPrice_max = $request->input('max_price');
-        if ($selectedPrice_max) {
-            $query->where('price', '<=', $selectedPrice_max);
+        $price = $request->input('price');
+        if ($price) {
+            $query->where('price', '<=', $price);
         }
         $searchTerm = $request->input('search');
         if ($searchTerm) {
@@ -44,8 +39,7 @@ class Productlist extends Component
             'products' => $products,
             'categories' => $categories,
             'selectedCategory' => $selectedCategory,
-            'selectedPrice_min' => $selectedPrice_min,
-            'selectedPrice_max' => $selectedPrice_max,
+            'price' => $price,
             'searchTerm' => $searchTerm,
         ]);
     }

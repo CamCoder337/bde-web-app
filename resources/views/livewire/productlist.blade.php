@@ -1,9 +1,27 @@
 
 <div class="bg-white">
-@include('layouts.flash-message')
-  <div class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
-    <h2 class="text-2xl font-bold tracking-tight text-gray-900">Products</h2>
+<form action="{{route('shop.index')}}" method="GET"class="flex flex-col md:flex-row gap-3" style="justify-content: center;">
+    <div class="flex">
+        <input type="text" name="search" id="search" placeholder="Search by name" class="w-full md:w-80 px-3 h-10 rounded-1 border-2 border-orange-500 focus:outline-none focus:border-orange-500">
+        <button type="submit" class="bg-orange-500 text-white rounded-r px-2 md:px-3 py-0 md:py-1">Search</button>
+    </div>
+    <select name="category" id="category" class="w-full md:w-80 px-3 h-10 rounded-1 border-2 border-orange-500 focus:outline-none focus:border-sorangehy-500">
+    <option value="" selected ="">All</option>
+    @foreach ($categories as $category)
+      <option value="{{$category->id}}" {{ $category->id ==$selectedCategory ? 'selected' : ''}}>{{$category->name}}</option>
+    @endforeach
 
+    </select>
+
+    <div class="flex">
+        <input type="number" name="price" id="price" placeholder="Max price" class="w-full md:w-80 px-3 h-10 rounded-1 border-2 border-orange-500 focus:outline-none focus:border-orange-500" value="{{$price}}">
+    </div>
+
+    </form>
+  <div class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
+  
+    <h2 class="text-2xl font-bold tracking-tight text-gray-900">Products</h2>
+  
     <div class="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
     @foreach ($products as $product)
       <div class="group relative">
