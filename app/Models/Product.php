@@ -24,6 +24,6 @@ class Product extends Model
 
     public function getFormatedPrice():string
     {
-        return str_replace('.', ',', $this->price / 100) . ' XAF';
+        return str_replace('.', ',', $this->price) . ' XAF';
     }
 }

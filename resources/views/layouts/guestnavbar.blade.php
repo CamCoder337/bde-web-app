@@ -46,9 +46,9 @@
                     
                     <x-slot name="content">
                     @if (Route::has('login'))
-                        <x-dropdown-link :href="route('login')" > {{ __('Log In') }} </x-dropdown-link>
+                        <x-dropdown-link :href="route('login')" class="hover:text-orange-600" > {{ __('Log In') }} </x-dropdown-link>
                         @if (Route::has('register'))
-                        <x-dropdown-link :href="route('register')" > {{ __('Register') }} </x-dropdown-link>
+                        <x-dropdown-link :href="route('register')" class="hover:text-orange-600"> {{ __('Register') }} </x-dropdown-link>
                         @endif
                     @endif
                     </x-slot>
@@ -86,15 +86,15 @@
         </div>
 
         <!-- Responsive Settings Options -->
-        <div class="pt-4 pb-1 border-t border-gray-200">
+        <div class="pt-4 pb-1 border-t border-orange-200">
             <div class="px-4">
             </div>
 
             <div class="mt-3 space-y-1">
                 @if (Route::has('login'))
-                        <x-responsive-nav-link :href="route('login')" > {{ __('Log In') }} </x-responsive-nav-link>
+                        <x-responsive-nav-link :href="route('login')" class="hover:text-orange-600" > {{ __('Log In') }} </x-responsive-nav-link>
                         @if (Route::has('register'))
-                        <x-responsive-nav-link :href="route('register')" > {{ __('Register') }} </x-responsive-nav-link>
+                        <x-responsive-nav-link :href="route('register')" class="hover:text-orange-600"> {{ __('Register') }} </x-responsive-nav-link>
                         @endif
                 @endif
             </div>

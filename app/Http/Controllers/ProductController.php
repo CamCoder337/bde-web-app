@@ -106,4 +106,10 @@ class ProductController extends Controller
             session()->flash('success', 'Product removed successfully');
         }
     }
+
+    public function show($id)
+    {
+        $product = Product::find($id);
+        return view('shop.show', ['product' => $product]);
+    }
 }

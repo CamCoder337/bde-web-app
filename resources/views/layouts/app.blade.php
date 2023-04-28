@@ -35,12 +35,13 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans antialiased" id="app">
-        <div class="min-h-screen bg-gray-100">
+        <div class="min-h-screen bg-orange-100">
             @auth
                 @include('layouts.navigation')
             @else
                 @include('layouts.guestnavbar')
             @endauth
+        
 
             <!-- Page Heading -->
             <!-- @if (isset($header))

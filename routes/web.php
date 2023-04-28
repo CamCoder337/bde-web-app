@@ -55,9 +55,12 @@ Route::get('shop', [ProductController::class, 'index'])->name('shop.index');
 Route::get('/shoppingcart', Shoppingcart::class)->name('shoppingcart');
 Route::get('payment-cancel',[PaypalController::class,'cancel'])->name('payment.cancel');
 Route::get('payment-success',[PaypalController::class,'success'])->name('payment.success');
+Route::get('/product/{id}', [ProductController::class, 'show'])->name('product.show');
 
 //Idea Routes
 Route::get('ideas', [IdeaController::class, 'index'])->name('ideas.index');
+Route::get('add-idea', [IdeaController::class, 'ideaForm'])->name('ideas.add_idea');
+Route::post('add-idea', [IdeaController::class, 'addIdea']);
 
 //Event Routes
 Route::get('/events', [EventController::class, 'index'])->name('events.index');
